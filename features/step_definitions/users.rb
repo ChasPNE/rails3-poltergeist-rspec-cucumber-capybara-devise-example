@@ -95,3 +95,7 @@ Then /^I should be logged out$/ do
 
   visit prev_path
 end
+
+Then /^I should see the homepage content$/ do
+  page.has_content?("Listing posts")
+end

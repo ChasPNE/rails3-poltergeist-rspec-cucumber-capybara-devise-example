@@ -22,3 +22,9 @@ Feature: users
 		When I click the 'Sign out' link
 		Then I should be redirected to the homepage
 		And I should be logged out
+
+	Scenario: modal dialog test
+		Given homepage
+		When I click the 'Launch demo modal' link
+		And I click the 'Close' button
+		Then I should see the homepage content
