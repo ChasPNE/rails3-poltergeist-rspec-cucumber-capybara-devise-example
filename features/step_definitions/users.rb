@@ -2,6 +2,10 @@ Given /^homepage$/ do
   visit '/'
 end
 
+Given /^a post has been created$/ do
+  Post.create :title=>"Post X Title", :body=>"Post X Body"
+end
+
 When /^fill the sign up form$/ do
   fill_in 'Email', :with => 'moo@foo.bar'
   fill_in 'Password', :with => 'moofoo'
@@ -96,6 +100,18 @@ Then /^I should be logged out$/ do
   visit prev_path
 end
 
+Given /^I wait (\d+) seconds?$/ do |sec|
+  sleep(sec.to_i)
+end
+
 Then /^I should see the homepage content$/ do
-  page.has_content?("Listing posts")
+  page.should have_content("Listing posts")
+end
+
+Then /^I should see a popup with the post information$/ do
+  page.should have_content("Post Title: Post X Title")
+end
+
+Then /^I should see the google home page$/ do
+  current_url.should == "http://www.google.com/"
 end

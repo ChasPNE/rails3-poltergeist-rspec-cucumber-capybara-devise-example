@@ -60,6 +60,8 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 
 Capybara.javascript_driver = :poltergeist
 
+Capybara.default_wait_time = 5
+
 Before do
 	User.create :email => 'foo@bar.baz', :password => 'abc123', :password_confirmation => 'abc123'
 end
